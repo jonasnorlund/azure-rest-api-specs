@@ -802,7 +802,7 @@
         "purchaseDate",
         "partnerName",
         "partnerId",
-        "isOperatorConnect"
+        "phoneNumberSource"
       ],
       "type": "object",
       "properties": {
@@ -827,6 +827,18 @@
           "type": "string",
           "x-ms-enum": {
             "name": "PhoneNumberType",
+            "modelAsString": true
+          }
+        },
+        "phoneNumberSource": {
+          "description": "The phone number's source, e.g. Cloud, OperatorConnect.",
+          "enum": [
+            "cloud",
+            "operatorConnect"
+          ],
+          "type": "string",
+          "x-ms-enum": {
+            "name": "phoneNumberSource",
             "modelAsString": true
           }
         },

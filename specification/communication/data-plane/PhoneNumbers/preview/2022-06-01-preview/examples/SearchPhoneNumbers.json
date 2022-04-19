@@ -40,7 +40,7 @@
         },
         "partnerName": "Microsoft",
         "partnerId": "d2fea165-4540-4ec8-a93f-6ed0baca28cd",
-        "isOperatorConnect": "false",
+        "phoneNumberSource": "cloud",
         "searchExpiresBy": "2020-11-19T16:31:49.048Z"
       }
     }
