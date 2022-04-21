@@ -1,0 +1,934 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ApiManagementClient",
+    "description": "REST API for performing operations on policy fragments in an Azure API Management deployment.",
+    "version": "2021-12-01-preview"
+  },
+  "host": "management.azure.com",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationIdentityProviders": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationIdentityProvider_ListByService",
+        "description": "Gets all authorization identity providers.",
+        "x-ms-examples": {
+          "ApiManagementListAuthorizationIdentityProviders": {
+            "$ref": "./examples/ApiManagementListAuthorizationIdentityProviders.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "|     Field     |     Usage     |     Supported operators     |     Supported functions     |</br>|-------------|-------------|-------------|-------------|</br>| name | filter, orderBy | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| description | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| value | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "OData order by query option."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/TopQueryParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SkipQueryParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned an array of authorization identity providers.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationIdentityProviderCollection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationIdentityProviders/{id}": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationIdentityProvider_Get",
+        "description": "Gets an authorization identity provider.",
+        "x-ms-examples": {
+          "ApiManagementGetAuthorizationIdentityProvider": {
+            "$ref": "./examples/ApiManagementGetAuthorizationIdentityProvider.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returns an authorization identity provider.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationIdentityProviderContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationProviders_ListByService",
+        "description": "Gets all authorization providers.",
+        "x-ms-examples": {
+          "ApiManagementListAuthorizationProviders": {
+            "$ref": "./examples/ApiManagementListAuthorizationProviders.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "|     Field     |     Usage     |     Supported operators     |     Supported functions     |</br>|-------------|-------------|-------------|-------------|</br>| name | filter, orderBy | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| description | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| value | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "OData order by query option."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/TopQueryParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SkipQueryParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned an array of authorization providers.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderCollection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{id}": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationProvider_Get",
+        "description": "Gets an authorization provider.",
+        "x-ms-examples": {
+          "ApiManagementGetAuthorizationProvider": {
+            "$ref": "./examples/ApiManagementGetAuthorizationProvider.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned an authorization provider.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationProvider_CreateOrUpdate",
+        "description": "Creates or updates an authorization provider.",
+        "x-ms-examples": {
+          "ApiManagementPutAuthorizationProvider": {
+            "$ref": "./examples/ApiManagementPutAuthorizationProvider.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderContract"
+            },
+            "description": "The authorization provider contents to apply."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created or updated an authorization provider.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "patch": { 
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationProvider_CreateOrUpdate",
+        "description": "Creates or updates an authorization provider.",
+        "x-ms-examples": {
+          "ApiManagementPutAuthorizationProvider": {
+            "$ref": "./examples/ApiManagementPutAuthorizationProvider.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderContract"
+            },
+            "description": "The authorization provider contents to apply."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created/updated an authorization provider.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationProvider_Delete",
+        "description": "Deletes an authorization provider.",
+        "x-ms-examples": {
+          "ApiManagementDeleteAuthorizationProvider": {
+            "$ref": "./examples/ApiManagementDeleteAuthorizationProvider.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted an authorization provider."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationIdentityProviders{authorizationProviderId}/authorizations": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "Authorization_ListByService",
+        "description": "Gets all authorizations for an authorization identity provider.",
+        "x-ms-examples": {
+          "ApiManagementListAuthorizations": {
+            "$ref": "./examples/ApiManagementListAuthorizations.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "|     Field     |     Usage     |     Supported operators     |     Supported functions     |</br>|-------------|-------------|-------------|-------------|</br>| name | filter, orderBy | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| description | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| value | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "OData order by query option."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/TopQueryParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SkipQueryParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned an array of authorizations.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationCollection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationIdentityProviders{authorizationProviderId}/authorizations/{id}": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "Authorization_Get",
+        "description": "Gets an authorization.",
+        "x-ms-examples": {
+          "ApiManagementGetAuthorization": {
+            "$ref": "./examples/ApiManagementGetAuthorization.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned an authorization.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }, 
+      "put": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "Authorization_CreateOrUpdate",
+        "description": "Create or update an authorization.",
+        "x-ms-examples": {
+          "ApiManagementPutAuthorization": {
+            "$ref": "./examples/ApiManagementPutAuthorization.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationContract"
+            },
+            "description": "The authorization contents to apply."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created or updated an authorization.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }, 
+      "delete": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "Authorization_Delete",
+        "description": "Deletes an authorization.",
+        "x-ms-examples": {
+          "ApiManagementDeleteAuthorization": {
+            "$ref": "./examples/ApiManagementDeleteAuthorization.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted an authorization."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationIdentityProviders{authorizationProviderId}/authorizations/{authorizationId}/getLoginLinks": {
+      "post": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "Authorization_GetLoginLink",
+        "description": "Gets a link used to start the OAuth flow.",
+        "x-ms-examples": {
+          "ApiManagementAuthorizationGetLoginLink": {
+            "$ref": "./examples/ApiManagementAuthorizationGetLoginLink.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned a login link.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/LoginLinkContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      } 
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AccessPolicy_ListByService",
+        "description": "Gets all access policies for an authorization.",
+        "x-ms-examples": {
+          "ApiManagementListAccessPolicies": {
+            "$ref": "./examples/ApiManagementListAccessPolicies.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "|     Field     |     Usage     |     Supported operators     |     Supported functions     |</br>|-------------|-------------|-------------|-------------|</br>| name | filter, orderBy | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| description | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>| value | filter | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |</br>"
+          },
+          {
+            "name": "$orderby",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": "OData order by query option."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/TopQueryParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SkipQueryParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned an array of access policies.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AccessPolicyCollection"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationProviders/{authorizationProviderId}/authorizations/{authorizationId}/accessPolicies/{accessPolicyId}": {
+      "get": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AccessPolicy_Get",
+        "description": "Gets an access policy.",
+        "x-ms-examples": {
+          "ApiManagementGetAccessPolicy": {
+            "$ref": "./examples/ApiManagementGetAccessPolicy.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AccessPolicyIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully returned an access policy.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AccessPolicyContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AccessPolicy_CreateOrUpdate",
+        "description": "Creates an access policy.",
+        "x-ms-examples": {
+          "ApiManagementPutAccessPolicy": {
+            "$ref": "./examples/ApiManagementPutAccessPolicy.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AccessPolicyIdParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AccessPolicyContract"
+            },
+            "description": "The access policy contents to apply."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created an access policy.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AccessPolicyContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "patch": { 
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AuthorizationProvider_CreateOrUpdate",
+        "description": "Creates or updates an authorization provider.",
+        "x-ms-examples": {
+          "ApiManagementPutAuthorizationProvider": {
+            "$ref": "./examples/ApiManagementPutAuthorizationProvider.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/IdParameter"
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderContract"
+            },
+            "description": "The authorization provider contents to apply."
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created/updated an authorization provider.",
+            "schema": {
+              "$ref": "./definitions.json#/definitions/AuthorizationProviderContract"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AuthorizationManager"
+        ],
+        "operationId": "AccessPolicy_Delete",
+        "description": "Deletes an access policy.",
+        "x-ms-examples": {
+          "ApiManagementDeleteAccessPolicy": {
+            "$ref": "./examples/ApiManagementDeleteAccessPolicy.json"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "./apimanagement.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ServiceNameParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationProviderIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AuthorizationIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/AccessPolicyIdParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "./apimanagement.json#/parameters/SubscriptionIdParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully deleted an access policy."
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "./apimanagement.json#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {}
+}
